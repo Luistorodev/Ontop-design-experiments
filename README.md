@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 🧪 Ontop UI Experiments
 
 A playground for exploring and testing UI ideas for Ontop.
