@@ -26,10 +26,10 @@
     --text-secondary: #d9d9d9;
     --text-muted: rgba(235, 235, 245, 0.6);
     --text-bottom-sheet: #f0f1f5;
-    
+
     /* Device */
     --device-width: 360px;
-    --device-height: 780px; 
+    --device-height: 780px;
 }
 
 /* Base Styles */
@@ -64,7 +64,7 @@ body {
     background-color: #000;
     border-radius: 40px;
     padding: 12px;
-    box-shadow: 0 24px 48px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
     position: relative;
     overflow: hidden;
 }
@@ -77,12 +77,13 @@ body {
     position: relative;
     overflow-y: auto;
     overflow-x: hidden;
-    scrollbar-width: none; 
+    scrollbar-width: none;
     opacity: 0;
     animation: fadeInApp 2.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+
 .app-container::-webkit-scrollbar {
-    display: none; 
+    display: none;
 }
 
 /* Status Bar */
@@ -98,6 +99,7 @@ body {
     top: 0;
     z-index: 50;
 }
+
 .status-icons {
     display: flex;
     gap: 6px;
@@ -123,7 +125,7 @@ body {
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .user-name {
@@ -156,6 +158,7 @@ body {
     cursor: pointer;
     transition: transform 0.2s;
 }
+
 .icon-btn:hover {
     transform: scale(1.05);
 }
@@ -197,7 +200,7 @@ body {
 
 .balance-amount {
     font-size: 30px;
-    font-weight: 800;
+    font-weight: 600;
     color: var(--text-white);
     letter-spacing: -0.5px;
     margin-bottom: 8px;
@@ -210,6 +213,7 @@ body {
     color: var(--text-white);
     font-size: 12px;
 }
+
 .currency-chip .flag-icon {
     width: 14px;
     height: 14px;
@@ -233,12 +237,20 @@ body {
     border-radius: 32px;
     border: none;
     font-size: 14px;
+    font-style: normal;
     font-weight: 600;
+    line-height: 20px;
+    /* 142.857% */
     font-family: inherit;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
+
+.action-btn i {
+    font-size: 18px;
+}
+
 .action-btn:active {
     transform: translateY(2px);
 }
@@ -261,7 +273,7 @@ body {
     background: linear-gradient(180deg, var(--purple-gradient-start) 0%, var(--purple-gradient-end) 100%);
     border: 1px solid #3a306b;
     color: white;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 /* Accounts Carousel */
@@ -272,9 +284,11 @@ body {
     padding: 0 16px 32px;
     scrollbar-width: none;
 }
+
 .accounts-carousel::-webkit-scrollbar {
     display: none;
 }
+
 .accounts-carousel::after {
     content: "";
     flex: 0 0 1px;
@@ -285,14 +299,14 @@ body {
     height: 110px;
     background-color: var(--purple-dark);
     border-radius: 12px;
-    padding: 16px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     user-select: none;
     -webkit-user-select: none;
     cursor: pointer;
@@ -301,7 +315,7 @@ body {
 
 .account-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .account-card:active {
@@ -311,14 +325,15 @@ body {
 .card-icon-wrapper {
     width: 24px;
     height: 24px;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(10px);
 }
+
 .card-icon-wrapper .flag-icon {
     width: 14px;
     height: 14px;
@@ -328,7 +343,7 @@ body {
 
 .account-balance {
     font-size: 24px;
-    font-weight: 800;
+    font-weight: 600;
     color: var(--text-white);
     margin-bottom: 2px;
 }
@@ -406,13 +421,14 @@ body {
 .tx-title {
     font-size: 14px;
     color: var(--text-white);
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .tx-status {
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 400;
 }
+
 .tx-status.completed {
     color: var(--green-success);
 }
@@ -423,7 +439,7 @@ body {
 
 .tx-amount {
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--text-white);
 }
 
@@ -431,6 +447,7 @@ body {
     color: var(--green-success);
     margin-right: 2px;
 }
+
 .tx-amount.negative .sign {
     color: var(--red-danger);
     margin-right: 2px;
@@ -440,9 +457,11 @@ body {
 .for-you-section {
     margin: 0 0 32px 0;
 }
+
 .for-you-section .section-header {
     padding: 0 16px;
 }
+
 .for-you-section .section-header h3 {
     color: var(--text-white);
 }
@@ -457,9 +476,11 @@ body {
     padding-left: 16px;
     padding-right: 16px;
 }
+
 .offers-carousel::-webkit-scrollbar {
     display: none;
 }
+
 .offers-carousel::after {
     content: "";
     flex: 0 0 4px;
@@ -471,8 +492,8 @@ body {
     border-radius: 12px;
     object-fit: cover;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     user-select: none;
     -webkit-user-select: none;
     pointer-events: none;
@@ -485,16 +506,17 @@ body {
     left: 16px;
     right: 16px;
     height: 64px;
-    background: var(--bg-nav);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid #393649;
+    background: rgba(36, 30, 68, 0.55);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 99999px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 12px;
-    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
     z-index: 40;
 }
 
@@ -514,9 +536,11 @@ body {
     flex: 1;
     height: 100%;
 }
+
 .nav-item i {
     font-size: 24px;
 }
+
 .nav-item span {
     font-size: 11px;
     font-weight: 500;
@@ -525,17 +549,21 @@ body {
 .nav-item.active {
     color: var(--text-white);
 }
+
 .nav-item.active span {
     display: block;
 }
+
 .nav-item:not(.active) span {
     display: none;
 }
 
-.nav-item:hover, .nav-item:active {
+.nav-item:hover,
+.nav-item:active {
     color: var(--text-white);
     transform: translateY(-2px);
 }
+
 .nav-sparkles i {
     color: var(--pink-primary);
 }
@@ -546,26 +574,28 @@ body {
 
 /* Animations */
 @keyframes fadeInApp {
-    from { 
-        opacity: 0; 
+    from {
+        opacity: 0;
         filter: blur(8px);
         transform: scale(0.96);
     }
-    to { 
-        opacity: 1; 
+
+    to {
+        opacity: 1;
         filter: blur(0px);
         transform: scale(1);
     }
 }
 
 @keyframes slideUp {
-    from { 
-        opacity: 0; 
-        transform: translateY(30px); 
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -574,6 +604,7 @@ body {
     .presentation-wrapper {
         padding: 0;
     }
+
     .device-frame {
         width: 100%;
         height: 100vh;
@@ -581,9 +612,11 @@ body {
         padding: 0;
         border: none;
     }
+
     .app-container {
         border-radius: 0;
     }
+
     .floating-nav {
         bottom: 25px;
     }
