@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 🧪 Ontop UI Experiments
 
 A playground for exploring and testing UI ideas for Ontop.
@@ -66,3 +67,7 @@ Product Designer & UI Systems Builder
 
 ---
 *Developed as a high-fidelity Proof of Concept / Concept Test.*
+=======
+# Ontop-design-experiments
+A collection of UI experiments and interface explorations for Ontop.
+>>>>>>> e5c20fb31c407b64739600821b3a71e69dc15835
