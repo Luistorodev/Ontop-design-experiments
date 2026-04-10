@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Token Wallet App Mockup</title>
+    <title>Token Wallet App - Splash</title>
 
     <!-- Fonts: General Sans for clean, premium financial look -->
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700,800&display=swap"
@@ -19,9 +19,18 @@
 <body>
     <div class="presentation-wrapper">
         <div class="device-frame">
-            <div class="app-container">
-                <!-- Status Bar Mock -->
-                <div class="status-bar">
+            <div class="app-container splash-container">
+                <!-- Video Background -->
+                <video class="splash-video" autoplay loop muted playsinline>
+                    <source src="assets/9057185-uhd_2160_3840_25fps.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <!-- Overlay to tint video to match Figma dark mode and ensure text legibility -->
+                <div class="splash-overlay"></div>
+
+                <!-- Status Bar Mock - Light Version for Dark Background -->
+                <div class="status-bar light">
                     <span class="time">9:41</span>
                     <div class="status-icons">
                         <i class="ph-fill ph-cell-signal-full"></i>
@@ -30,160 +39,14 @@
                     </div>
                 </div>
 
-                <!-- Header -->
-                <header class="app-header">
-                    <div class="user-profile">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=100&h=100"
-                            alt="Profile Picture" class="avatar">
-                        <div class="user-info">
-                            <h1 class="user-name">Luis Toro Cordero</h1>
-                            <p class="greeting">Welcome back</p>
-                        </div>
-                    </div>
-                    <div class="header-actions">
-                        <button class="icon-btn">
-                            <i class="ph ph-shield-check"></i>
-                        </button>
-                        <button class="icon-btn notification-btn">
-                            <i class="ph ph-bell"></i>
-                            <span class="badge">1</span>
-                        </button>
-                    </div>
-                </header>
-
-                <!-- Scrollable Content -->
-                <main class="app-content">
-
-                    <!-- Balance Section -->
-                    <section class="balance-section">
-                        <h2 class="balance-label">Total Balance</h2>
-                        <div class="balance-amount">$10,000.00 USD</div>
-                        <div class="currency-chip">
-                            <img src="assets/Flag.svg" alt="Ontop Flag" class="flag-icon">
-                            <span>USD</span>
-                        </div>
-                    </section>
-
-                    <!-- Action Buttons -->
-                    <section class="action-buttons">
-                        <button class="action-btn primary">
-                            <i class="ph ph-paper-plane-tilt"></i>
-                            Send
-                        </button>
-                        <button class="action-btn secondary">
-                            <i class="ph ph-plus-circle"></i>
-                            Receive
-                        </button>
-                        <button class="action-btn outline">
-                            <i class="ph ph-dots-three"></i>
-                        </button>
-                    </section>
-
-                    <!-- Accounts Carousel -->
-                    <section class="accounts-carousel">
-                        <div class="account-card pattern-bg">
-                            <div class="card-top">
-                                <div class="card-icon-wrapper">
-                                    <img src="assets/Flag.svg" alt="Ontop Flag" class="flag-icon">
-                                </div>
-                            </div>
-                            <div class="card-bottom">
-                                <div class="account-balance">15,000.00</div>
-                                <div class="account-type">Payroll account</div>
-                            </div>
-                        </div>
-
-                        <div class="account-card">
-                            <div class="card-top">
-                                <div class="card-icon-wrapper">
-                                    <img src="assets/Flag.svg" alt="Ontop Flag" class="flag-icon">
-                                </div>
-                            </div>
-                            <div class="card-bottom">
-                                <div class="account-balance">15,000.00</div>
-                                <div class="account-type">Digital USD</div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Transactions -->
-                    <section class="transactions-section">
-                        <header class="section-header">
-                            <h3>Your transactions</h3>
-                            <a href="#" class="btn-link">See all</a>
-                        </header>
-
-                        <div class="transaction-list">
-                            <div class="transaction-item">
-                                <div class="tx-left">
-                                    <div class="tx-icon">
-                                        <i class="ph ph-arrow-down-left"></i>
-                                    </div>
-                                    <div class="tx-details">
-                                        <p class="tx-title">Payment link</p>
-                                        <span class="tx-status completed">Completed</span>
-                                    </div>
-                                </div>
-                                <div class="tx-right">
-                                    <p class="tx-amount positive"><span class="sign">+</span>90,000 USD</p>
-                                </div>
-                            </div>
-
-                            <div class="transaction-item">
-                                <div class="tx-left">
-                                    <div class="tx-icon">
-                                        <i class="ph ph-arrow-down-left"></i>
-                                    </div>
-                                    <div class="tx-details">
-                                        <p class="tx-title">Amazon</p>
-                                        <span class="tx-status completed">Completed</span>
-                                    </div>
-                                </div>
-                                <div class="tx-right">
-                                    <p class="tx-amount negative"><span class="sign">-</span>90,000 USDc</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- For You Section -->
-                    <section class="for-you-section">
-                        <header class="section-header">
-                            <h3>For you</h3>
-                        </header>
-
-                        <div class="offers-carousel">
-                            <img src="assets/extra-cash.png" alt="Extra cash? Ready for you" class="offer-banner">
-                            <img src="assets/grow-money.png" alt="Grow your money" class="offer-banner">
-                        </div>
-                    </section>
-                    <!-- Extra space to scroll past the floating nav bar -->
-                    <div class="scroll-spacer"></div>
-                </main>
+                <!-- CTA Buttons -->
+                <div class="splash-content">
+                    <a href="dashboard.html" class="splash-btn splash-btn-white">Create an account</a>
+                    <a href="dashboard.html" class="splash-btn splash-btn-primary">Log in</a>
+                </div>
             </div>
-
-            <!-- Floating Navigation Bar -->
-            <nav class="floating-nav">
-                <button class="nav-item active">
-                    <i class="ph ph-house"></i>
-                    <span>Home</span>
-                </button>
-                <button class="nav-item">
-                    <i class="ph ph-credit-card"></i>
-                </button>
-                <button class="nav-item">
-                    <i class="ph ph-arrows-left-right"></i>
-                </button>
-                <button class="nav-item">
-                    <i class="ph ph-rocket-launch"></i>
-                </button>
-                <button class="nav-item nav-sparkles">
-                    <i class="ph ph-sparkle"></i>
-                </button>
-            </nav>
         </div>
     </div>
-    <script src="js/main.js"></script>
 </body>
 
 </html>

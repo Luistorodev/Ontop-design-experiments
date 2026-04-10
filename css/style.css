@@ -69,10 +69,33 @@ body {
     overflow: hidden;
 }
 
+.app-bg-base {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    background-color: #05030f;
+    /* Deep dark purple-black */
+    border-radius: 32px;
+}
+
+.app-bg-gradient {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    background: radial-gradient(100.38% 68.74% at 50% -23.81%, #21136C 0%, #7064AC 18.27%, #4C3E97 42.79%, #0D082B 81.73%, #08051A 100%);
+    border-radius: 32px;
+    opacity: 0;
+    animation: radialFadeIn 3.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
 .app-container {
     width: 100%;
     height: 100%;
-    background: linear-gradient(160deg, #4c3e97 0%, var(--bg-app-grad-start) 20%, var(--bg-app-grad-mid) 50%, var(--bg-app-grad-end) 100%);
+    background: transparent;
     border-radius: 32px;
     position: relative;
     overflow-y: auto;
@@ -587,6 +610,16 @@ body {
     }
 }
 
+@keyframes radialFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -620,4 +653,98 @@ body {
     .floating-nav {
         bottom: 25px;
     }
+}
+
+/* --- SPLASH SCREEN --- */
+.splash-container {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    background-color: #08051A;
+}
+
+.splash-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.splash-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(180deg,
+            /*             rgba(33, 19, 108, 0.85) 0%,
+            rgba(53, 39, 124, 0.85) 4.57%,
+            rgba(73, 60, 140, 0.85) 9.13%, */
+            rgba(112, 100, 172, 0.85) 18.27%,
+            rgba(76, 62, 151, 0.85) 42.79%,
+            rgba(60, 49, 124, 0.85) 52.52%,
+            rgba(45, 35, 97, 0.85) 62.26%,
+            rgba(29, 22, 70, 0.85) 72.0%,
+            rgba(13, 8, 43, 0.85) 81.73%,
+            rgba(8, 5, 26, 0.85) 100%);
+}
+
+.splash-content {
+    position: absolute;
+    bottom: 24px;
+    left: 16px;
+    right: 16px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.splash-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 44px;
+    border-radius: 32px;
+    font-family: 'General Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    text-decoration: none;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0px 1px 2px 0px rgba(13, 12, 12, 0.05);
+}
+
+.splash-btn:active {
+    transform: scale(0.96);
+}
+
+.splash-btn-white {
+    background-color: var(--text-white);
+    color: #5D5657;
+    border: 1px solid #C9C5C5;
+}
+
+.splash-btn-primary {
+    background-color: var(--pink-primary);
+    color: var(--text-white);
+    border: none;
+}
+
+.status-bar.light {
+    color: var(--text-white);
+}
+
+/* Ensure status bar is on top of everything on splash */
+.splash-container>.status-bar {
+    position: relative;
+    z-index: 20;
 }
