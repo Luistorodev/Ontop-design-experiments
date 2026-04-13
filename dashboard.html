@@ -53,8 +53,9 @@
                     </div>
                 </header>
 
-                <!-- Scrollable Content -->
-                <main class="app-content">
+                <div class="views-wrapper">
+                    <!-- Scrollable Content: Home -->
+                    <main class="app-content view-pane active" id="view-home">
 
                     <!-- Balance Section -->
                     <section class="balance-section">
@@ -154,14 +155,69 @@
                             <h3>For you</h3>
                         </header>
 
-                        <div class="offers-carousel">
-                            <img src="assets/extra-cash.png" alt="Extra cash? Ready for you" class="offer-banner">
-                            <img src="assets/grow-money.png" alt="Grow your money" class="offer-banner">
+                        <div class="offer-container">
+                            <img src="assets/Banner New.svg" alt="For you banner" class="offer-banner-single">
                         </div>
                     </section>
                     <!-- Extra space to scroll past the floating nav bar -->
                     <div class="scroll-spacer"></div>
-                </main>
+                    </main>
+
+                    <!-- Scrollable Content: Card -->
+                    <main class="app-content view-pane" id="view-card">
+                        <div class="card-display-section">
+                            <img src="assets/Virtual Card.png" alt="Virtual Card" class="virtual-card-img">
+                        </div>
+
+                        <div class="card-actions-grid">
+                            <button class="card-action-btn">
+                                <div class="action-icon-circle">
+                                    <i class="ph ph-snowflake"></i>
+                                </div>
+                                <span>Freeze card</span>
+                            </button>
+                            <button class="card-action-btn">
+                                <div class="action-icon-circle">
+                                    <i class="ph ph-eye"></i>
+                                </div>
+                                <span>Card details</span>
+                            </button>
+                            <button class="card-action-btn">
+                                <div class="action-icon-circle">
+                                    <i class="ph ph-gear"></i>
+                                </div>
+                                <span>Card settings</span>
+                            </button>
+                        </div>
+
+                        <div class="promo-banner-dark">
+                            <div class="promo-content">
+                                <h4>Get physical card</h4>
+                                <p>Get most of your Ontop Visa card</p>
+                            </div>
+                            <div class="promo-icon-btn">
+                                <i class="ph ph-arrow-right"></i>
+                            </div>
+                        </div>
+
+                        <section class="support-section">
+                            <h3 class="support-heading">Need help?</h3>
+                            <div class="support-list-item">
+                                <div class="support-icon-circle">
+                                    <i class="ph ph-lifebuoy"></i>
+                                </div>
+                                <div class="support-text">
+                                    <h4>Support</h4>
+                                    <p>Contact our Support team</p>
+                                </div>
+                                <i class="ph ph-caret-right support-arrow"></i>
+                            </div>
+                            <div class="support-divider"></div>
+                        </section>
+
+                        <div class="scroll-spacer"></div>
+                    </main>
+                </div>
             </div>
 
             <!-- Floating Navigation Bar -->
@@ -172,15 +228,19 @@
                 </button>
                 <button class="nav-item">
                     <i class="ph ph-credit-card"></i>
+                    <span>Card</span>
                 </button>
                 <button class="nav-item">
                     <i class="ph ph-arrows-left-right"></i>
+                    <span>Swap</span>
                 </button>
                 <button class="nav-item">
                     <i class="ph ph-rocket-launch"></i>
+                    <span>Growth</span>
                 </button>
                 <button class="nav-item nav-sparkles">
                     <i class="ph ph-sparkle"></i>
+                    <span>Perks</span>
                 </button>
             </nav>
         </div>
