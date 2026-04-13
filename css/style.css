@@ -280,9 +280,20 @@ body {
 
 .action-btn.primary {
     flex: 1;
-    background-color: var(--purple-primary);
     color: white;
-    border: 1px solid #3a306b;
+    border: 2px solid transparent;
+    background: 
+        linear-gradient(var(--purple-primary), var(--purple-primary)) padding-box,
+        linear-gradient(90deg, #5d5657, #c9c5c5, #ffffff, #c9c5c5, #5d5657, #c9c5c5, #ffffff, #c9c5c5, #5d5657) border-box;
+    background-size: 100% 100%, 200% 100%;
+    animation: metallicBorder 3s linear infinite;
+    box-shadow: 0 0 12px rgba(201, 197, 197, 0.4), 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes metallicBorder {
+    to {
+        background-position: 0% 0%, 200% 0%;
+    }
 }
 
 .action-btn.secondary {
@@ -683,16 +694,16 @@ body {
     height: 100%;
     z-index: 2;
     background: linear-gradient(180deg,
-            /*             rgba(33, 19, 108, 0.85) 0%,
-            rgba(53, 39, 124, 0.85) 4.57%,
-            rgba(73, 60, 140, 0.85) 9.13%, */
-            rgba(112, 100, 172, 0.85) 18.27%,
-            rgba(76, 62, 151, 0.85) 42.79%,
-            rgba(60, 49, 124, 0.85) 52.52%,
-            rgba(45, 35, 97, 0.85) 62.26%,
-            rgba(29, 22, 70, 0.85) 72.0%,
-            rgba(13, 8, 43, 0.85) 81.73%,
-            rgba(8, 5, 26, 0.85) 100%);
+            /*             rgba(33, 19, 108, 0.95) 0%,
+            rgba(53, 39, 124, 0.95) 4.57%,
+            rgba(73, 60, 140, 0.95) 9.13%, */
+            rgba(112, 100, 172, 0.95) 18.27%,
+            rgba(76, 62, 151, 0.95) 42.79%,
+            rgba(60, 49, 124, 0.95) 52.52%,
+            rgba(45, 35, 97, 0.95) 62.26%,
+            rgba(29, 22, 70, 0.95) 72.0%,
+            rgba(13, 8, 43, 0.95) 81.73%,
+            rgba(8, 5, 26, 0.95) 100%);
 }
 
 .splash-content {
@@ -747,4 +758,26 @@ body {
 .splash-container>.status-bar {
     position: relative;
     z-index: 20;
+}
+
+/* App Phrase */
+.splash-phrase {
+    max-width: 80%;
+    height: auto;
+    align-self: flex-start;
+    margin-bottom: 16px; /* Combined with flex gap: 16px results in exactly 32px gap */
+    opacity: 0;
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
