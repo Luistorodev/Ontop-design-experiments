@@ -36,7 +36,7 @@
                 <header class="app-header">
                     <div class="user-profile">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=100&h=100"
-                            alt="Profile Picture" class="avatar">
+                            alt="Profile Picture" class="avatar" onclick="window.location.href='index.html';" style="cursor: pointer;">
                         <div class="user-info">
                             <h1 class="user-name">Luis Toro Cordero</h1>
                             <p class="greeting">Welcome back</p>
@@ -165,8 +165,13 @@
 
                     <!-- Scrollable Content: Card -->
                     <main class="app-content view-pane" id="view-card">
-                        <div class="card-display-section">
-                            <img src="assets/Virtual Card.png" alt="Virtual Card" class="virtual-card-img">
+                        <div class="single-card-display">
+                            <div class="card-slide">
+                                <div class="virtual-card-wrapper">
+                                    <img src="assets/Virtual Card.png" alt="Virtual Card" class="virtual-card-img">
+                                    <div class="card-flare"></div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="card-actions-grid">
@@ -190,30 +195,11 @@
                             </button>
                         </div>
 
-                        <div class="promo-banner-dark">
-                            <div class="promo-content">
-                                <h4>Get physical card</h4>
-                                <p>Get most of your Ontop Visa card</p>
-                            </div>
-                            <div class="promo-icon-btn">
-                                <i class="ph ph-arrow-right"></i>
-                            </div>
+                        <div class="offer-container">
+                            <img src="assets/Banner Card.png" alt="Get physical card banner" class="offer-banner-single">
                         </div>
 
-                        <section class="support-section">
-                            <h3 class="support-heading">Need help?</h3>
-                            <div class="support-list-item">
-                                <div class="support-icon-circle">
-                                    <i class="ph ph-lifebuoy"></i>
-                                </div>
-                                <div class="support-text">
-                                    <h4>Support</h4>
-                                    <p>Contact our Support team</p>
-                                </div>
-                                <i class="ph ph-caret-right support-arrow"></i>
-                            </div>
-                            <div class="support-divider"></div>
-                        </section>
+
 
                         <div class="scroll-spacer"></div>
                     </main>

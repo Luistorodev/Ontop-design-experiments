@@ -87,9 +87,13 @@ body {
     right: 12px;
     bottom: 12px;
     background: radial-gradient(100.38% 68.74% at 50% -23.81%, #21136C 0%, #7064AC 18.27%, #4C3E97 42.79%, #0D082B 81.73%, #08051A 100%);
+    background-size: 160% 160%;
+    background-position: 20% 0%;
     border-radius: 32px;
     opacity: 0;
-    animation: radialFadeIn 3.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: 
+        radialFadeIn 3.5s cubic-bezier(0.25, 1, 0.5, 1) forwards,
+        breathingGradient 14s ease-in-out infinite alternate;
 }
 
 .app-container {
@@ -630,6 +634,15 @@ body {
     }
 }
 
+@keyframes breathingGradient {
+    0% {
+        background-position: 20% 0%;
+    }
+    100% {
+        background-position: 80% 20%;
+    }
+}
+
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -843,18 +856,83 @@ body {
 }
 
 /* --- CARD VIEW COMPONENT --- */
-.card-display-section {
-    padding: 16px;
+.single-card-display {
     display: flex;
     justify-content: center;
+    padding: 16px 0;
+}
+
+.card-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 0 16px; 
+}
+
+.virtual-card-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 290px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    -webkit-mask-image: linear-gradient(115deg, #000 40%, transparent 60%);
+    -webkit-mask-size: 300% 100%;
+    -webkit-mask-position: 0% 0;
 }
 
 .virtual-card-img {
-    width: 290px;
+    width: 100%;
     height: auto;
     object-fit: contain;
-    border-radius: 12px;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    display: block;
+}
+
+.card-flare {
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    pointer-events: none;
+    z-index: 10;
+    filter: blur(8px);
+}
+
+.card-slide.play-anim .card-flare {
+    animation: premiumFlare 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+}
+
+.card-slide.play-anim .virtual-card-wrapper {
+    animation: premiumAura 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+}
+
+@keyframes premiumFlare {
+    0% { left: -150%; }
+    100% { left: 150%; }
+}
+
+@keyframes premiumAura {
+    0% {
+        -webkit-mask-position: 100% 0;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 0px rgba(122, 80, 247, 0);
+    }
+    50% {
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 60px rgba(122, 80, 247, 0.5), 0 0 30px rgba(255, 90, 112, 0.4);
+    }
+    100% {
+        -webkit-mask-position: 0% 0;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 0px rgba(122, 80, 247, 0);
+    }
 }
 
 .card-actions-grid {
@@ -957,65 +1035,4 @@ body {
     justify-content: center;
     font-size: 14px;
     z-index: 2;
-}
-
-.support-section {
-    padding: 0 16px 32px;
-}
-
-.support-heading {
-    color: var(--text-secondary);
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 12px;
-}
-
-.support-list-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 0;
-    cursor: pointer;
-}
-
-.support-icon-circle {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-}
-
-.support-text {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.support-text h4 {
-    color: white;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.support-text p {
-    color: var(--text-secondary);
-    font-size: 12px;
-}
-
-.support-arrow {
-    color: var(--text-secondary);
-    font-size: 16px;
-}
-
-.support-divider {
-    height: 1px;
-    background: rgba(255, 255, 255, 0.1);
-    width: 100%;
-    margin-top: 12px;
 }

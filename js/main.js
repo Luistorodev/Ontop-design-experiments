@@ -48,6 +48,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (currentIndex === index) {
                         currentView.className = "app-content view-pane"; // Hide old
                         nextView.className = "app-content view-pane active"; // Show new
+                        
+                        // Fire card animation when entering the card view
+                        if (nextView.id === 'view-card') {
+                            const slide = nextView.querySelector('.card-slide');
+                            if (slide) {
+                                slide.classList.remove('play-anim');
+                                void slide.offsetWidth;
+                                slide.classList.add('play-anim');
+                            }
+                        }
                     }
                 }, 400); // matches the 0.4s CSS duration
             } else if (nextView === null) {
@@ -57,64 +67,28 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Make carousels drag-to-scroll for desktop testing
-    const sliders = document.querySelectorAll('.accounts-carousel, .offers-carousel');
-    let isDragging = false;
-    
-    sliders.forEach(slider => {
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        slider.addEventListener('mousedown', (e) => {
-            isDown = true;
-            isDragging = false;
-            slider.style.cursor = 'grabbing';
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
+    // Allow clicking the card itself to replay the animation manually
+    const cardSlides = document.querySelectorAll('.card-slide');
+    cardSlides.forEach(slide => {
+        slide.style.cursor = 'pointer'; // Ensure it looks clickable
+        slide.addEventListener('click', () => {
+            // Fire the Aura/Flare animation manually on click
+            slide.classList.remove('play-anim');
+            void slide.offsetWidth; 
+            slide.classList.add('play-anim');
         });
-        
-        slider.addEventListener('mouseleave', () => {
-            isDown = false;
-            slider.style.cursor = 'grab';
-        });
-        
-        slider.addEventListener('mouseup', () => {
-            isDown = false;
-            slider.style.cursor = 'grab';
-            // Slight delay before resetting isDragging to ensure click event fires correctly with the state
-            setTimeout(() => {
-                isDragging = false;
-            }, 50);
-        });
-        
-        slider.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 2; // Scroll speed factor
-            if (Math.abs(walk) > 5) {
-                isDragging = true;
-            }
-            slider.scrollLeft = scrollLeft - walk;
-        });
-        
-        // Initial state
-        slider.style.cursor = 'grab';
     });
 
     // Sub-interaction: animate account cards on click
     const accountCards = document.querySelectorAll('.account-card');
     accountCards.forEach(card => {
         card.addEventListener('click', () => {
-            if (!isDragging) {
-                // Smoothly scroll the card to the center of the carousel
-                card.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'nearest', 
-                    inline: 'center' 
-                });
-            }
+            // Smoothly scroll the card to the center of the carousel
+            card.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'nearest', 
+                inline: 'center' 
+            });
         });
     });
 });
