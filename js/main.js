@@ -8,87 +8,117 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Map of nav indexes to views (0 = Home, 1 = Card)
     const viewMap = [viewHome, viewCard, null, null, null];
-    let currentIndex = 0; // Starts at Home
+    let currentIndex = 0;       // visually highlighted nav item
+    let lastRealViewIndex = 0;  // index of the last view actually shown on screen
 
     navItems.forEach((item, index) => {
         item.addEventListener("click", () => {
-            // Remove active class from all
             if (item.classList.contains("active")) return;
-            
+
             navItems.forEach(nav => nav.classList.remove("active"));
             item.classList.add("active");
+            currentIndex = index;
 
-            // Handle routing if view exists
             const nextView = viewMap[index];
-            const currentView = viewMap[currentIndex];
-            
-            if (nextView && currentView && nextView !== currentView) {
-                // Scroll to top
-                appContainer.scrollTop = 0;
 
-                // Reset animation classes
-                currentView.className = "app-content view-pane";
-                nextView.className = "app-content view-pane";
+            // Unimplemented tab: only update the nav highlight, leave views untouched
+            if (nextView === null) return;
 
-                // Direction logic: if going to a higher index, slide right-to-left
-                if (index > currentIndex) {
-                    currentView.classList.add("slide-out-left");
-                    nextView.classList.add("slide-in-right");
-                } else {
-                    // Sliding back, left-to-right
-                    currentView.classList.add("slide-out-right");
-                    nextView.classList.add("slide-in-left");
-                }
-                
-                currentIndex = index;
+            const currentView = viewMap[lastRealViewIndex];
 
-                // After animation completes, clean up classes to keep it robust
-                setTimeout(() => {
-                    // Only apply if it's still the active view after the timeout
-                    if (currentIndex === index) {
-                        currentView.className = "app-content view-pane"; // Hide old
-                        nextView.className = "app-content view-pane active"; // Show new
-                        
-                        // Fire card animation when entering the card view
-                        if (nextView.id === 'view-card') {
-                            const slide = nextView.querySelector('.card-slide');
-                            if (slide) {
-                                slide.classList.remove('play-anim');
-                                void slide.offsetWidth;
-                                slide.classList.add('play-anim');
-                            }
+            if (nextView === currentView) return; // same real view, nothing to do
+
+            // Scroll to top
+            appContainer.scrollTop = 0;
+
+            // Reset animation classes
+            currentView.className = "app-content view-pane";
+            nextView.className = "app-content view-pane";
+
+            // Direction: use lastRealViewIndex for correct left/right slide
+            if (index > lastRealViewIndex) {
+                currentView.classList.add("slide-out-left");
+                nextView.classList.add("slide-in-right");
+            } else {
+                currentView.classList.add("slide-out-right");
+                nextView.classList.add("slide-in-left");
+            }
+
+            lastRealViewIndex = index;
+
+            setTimeout(() => {
+                if (lastRealViewIndex === index) {
+                    currentView.className = "app-content view-pane";
+                    nextView.className = "app-content view-pane active";
+
+                    // Fire card entry animation on the visible (first) card only
+                    if (nextView.id === 'view-card') {
+                        const firstSlide = nextView.querySelector('#cardsTrack .card-slide');
+                        if (firstSlide) {
+                            firstSlide.classList.remove('play-anim');
+                            void firstSlide.offsetWidth;
+                            firstSlide.classList.add('play-anim');
                         }
                     }
-                }, 400); // matches the 0.4s CSS duration
-            } else if (nextView === null) {
-                // Fallback for unimplemented tabs, just update index
-                currentIndex = index;
-            }
+                }
+            }, 400);
         });
     });
 
     // Allow clicking the card itself to replay the animation manually
-    const cardSlides = document.querySelectorAll('.card-slide');
-    cardSlides.forEach(slide => {
-        slide.style.cursor = 'pointer'; // Ensure it looks clickable
-        slide.addEventListener('click', () => {
-            // Fire the Aura/Flare animation manually on click
-            slide.classList.remove('play-anim');
-            void slide.offsetWidth; 
-            slide.classList.add('play-anim');
-        });
-    });
+    // (removed – flare now only fires on section entry, not on card click)
 
     // Sub-interaction: animate account cards on click
     const accountCards = document.querySelectorAll('.account-card');
     accountCards.forEach(card => {
         card.addEventListener('click', () => {
-            // Smoothly scroll the card to the center of the carousel
             card.scrollIntoView({ 
                 behavior: 'smooth', 
                 block: 'nearest', 
                 inline: 'center' 
             });
         });
+    });
+
+    // --- Card Slider (Virtual ↔ Physical) ---
+    const cardsTrack  = document.getElementById('cardsTrack');
+    const cardToggle  = document.getElementById('cardToggle');
+    const toggleOpts  = document.querySelectorAll('.toggle-option');
+    const cardSlides  = document.querySelectorAll('#cardsTrack .card-slide');
+
+    let currentCardIndex = 0; // 0 = Virtual, 1 = Physical
+
+    function switchToCard(index) {
+        if (index === currentCardIndex) return;
+        currentCardIndex = index;
+
+        // Slide the track
+        if (index === 1) {
+            cardsTrack.classList.add('show-physical');
+        } else {
+            cardsTrack.classList.remove('show-physical');
+        }
+
+        // Update toggle pill & labels
+        toggleOpts.forEach((btn, i) => {
+            btn.classList.toggle('active', i === index);
+        });
+        if (index === 1) {
+            cardToggle.classList.add('physical-active');
+        } else {
+            cardToggle.classList.remove('physical-active');
+        }
+    }
+
+    // Clicking the card slides to the other one
+    cardSlides.forEach((slide, i) => {
+        slide.addEventListener('click', () => {
+            switchToCard(currentCardIndex === 0 ? 1 : 0);
+        });
+    });
+
+    // Toggle buttons also work as a shortcut
+    toggleOpts.forEach((btn, i) => {
+        btn.addEventListener('click', () => switchToCard(i));
     });
 });

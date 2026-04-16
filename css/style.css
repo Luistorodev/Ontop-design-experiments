@@ -91,7 +91,7 @@ body {
     background-position: 20% 0%;
     border-radius: 32px;
     opacity: 0;
-    animation: 
+    animation:
         radialFadeIn 3.5s cubic-bezier(0.25, 1, 0.5, 1) forwards,
         breathingGradient 14s ease-in-out infinite alternate;
 }
@@ -212,7 +212,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 16px 0 24px;
+    padding: 32px 0 46px;
     opacity: 0;
     animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     animation-delay: 0.6s;
@@ -286,11 +286,11 @@ body {
     flex: 1;
     color: white;
     border: 1px solid transparent;
-    background: 
+    background:
         linear-gradient(var(--purple-primary), var(--purple-primary)) padding-box,
         linear-gradient(90deg, #5d5657, #c9c5c5, #ffffff, #c9c5c5, #5d5657, #c9c5c5, #ffffff, #c9c5c5, #5d5657) border-box;
     background-size: 100% 100%, 200% 100%;
-    animation: 
+    animation:
         metallicBorder 2.5s linear 2,
         fadeGlow 0.5s ease 4.5s forwards;
     box-shadow: 0 0 8px rgba(201, 197, 197, 0.4), 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -307,6 +307,7 @@ body {
         border-color: transparent;
         box-shadow: 0 0 8px rgba(201, 197, 197, 0.4), 0 4px 12px rgba(0, 0, 0, 0.15);
     }
+
     to {
         border-color: var(--purple-primary);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -333,7 +334,7 @@ body {
     display: flex;
     gap: 16px;
     overflow-x: auto;
-    padding: 0 16px 32px;
+    padding: 4px 16px 32px;
     scrollbar-width: none;
 }
 
@@ -375,14 +376,13 @@ body {
 }
 
 .card-icon-wrapper {
-    width: 24px;
-    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 99px;
+    padding: 4px 8px 4px 4px;
     backdrop-filter: blur(10px);
 }
 
@@ -391,11 +391,21 @@ body {
     height: 14px;
     border-radius: 50%;
     object-fit: cover;
+    flex-shrink: 0;
+}
+
+.card-currency-label {
+    font-family: 'General Sans', sans-serif;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    color: white;
 }
 
 .account-balance {
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--text-white);
     margin-bottom: 2px;
 }
@@ -638,6 +648,7 @@ body {
     0% {
         background-position: 20% 0%;
     }
+
     100% {
         background-position: 80% 20%;
     }
@@ -704,14 +715,28 @@ body {
 
 .splash-content {
     position: absolute;
-    bottom: 24px;
-    left: 16px;
-    right: 16px;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 10;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    padding: 120px 16px 24px;
     animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.splash-content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.55) 40%,
+            rgba(0, 0, 0, 0.88) 100%);
+    z-index: -1;
+    pointer-events: none;
+    border-radius: inherit;
 }
 
 .splash-btn {
@@ -774,6 +799,7 @@ body {
         opacity: 0;
         transform: translateY(40px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -803,7 +829,8 @@ body {
 .view-pane.slide-in-right {
     display: block;
     position: absolute;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     animation: slideInRight 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
@@ -815,7 +842,8 @@ body {
 .view-pane.slide-in-left {
     display: block;
     position: absolute;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     animation: slideInLeft 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
@@ -825,36 +853,137 @@ body {
 }
 
 @keyframes slideInRight {
-    from { transform: translateX(80px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-@keyframes slideOutLeft {
-    from { transform: translateX(0); opacity: 1; }
-    to { transform: translateX(-80px); opacity: 0; }
-}
-@keyframes slideInLeft {
-    from { transform: translateX(-80px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-@keyframes slideOutRight {
-    from { transform: translateX(0); opacity: 1; }
-    to { transform: translateX(80px); opacity: 0; }
+    from {
+        transform: translateX(80px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-80px);
+        opacity: 0;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-80px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(80px);
+        opacity: 0;
+    }
+}
+
+
 /* --- CARD VIEW COMPONENT --- */
-.single-card-display {
+
+/* Card Type Toggle */
+.card-type-toggle-wrapper {
     display: flex;
     justify-content: center;
+    padding: 20px 16px 8px;
+}
+
+.card-type-toggle {
+    position: relative;
+    display: flex;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 99px;
+    padding: 4px;
+    gap: 0;
+    width: 200px;
+}
+
+.toggle-pill {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    background: var(--purple-primary);
+    border-radius: 99px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(122, 80, 247, 0.5);
+    z-index: 0;
+}
+
+.card-type-toggle.physical-active .toggle-pill {
+    transform: translateX(calc(100% + 0px));
+}
+
+.toggle-option {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-family: 'General Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 0;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    text-align: center;
+}
+
+.toggle-option.active {
+    color: var(--text-white);
+}
+
+/* Card display area — acts as the clipped viewport */
+.single-card-display {
+    overflow: hidden;
     padding: 16px 0;
+    width: 100%;
+}
+
+/* Track holds both cards side by side */
+.cards-track {
+    display: flex;
+    width: 200%;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.cards-track.show-physical {
+    transform: translateX(-50%);
 }
 
 .card-slide {
-    flex: 0 0 100%;
-    width: 100%;
-    scroll-snap-align: center;
+    flex: 0 0 50%; /* each slide = half the track = full viewport */
     display: flex;
     justify-content: center;
-    padding: 0 16px; 
+    padding: 0 16px;
+    cursor: pointer;
 }
 
 .virtual-card-wrapper {
@@ -866,7 +995,12 @@ body {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
     -webkit-mask-image: linear-gradient(115deg, #000 40%, transparent 60%);
     -webkit-mask-size: 300% 100%;
-    -webkit-mask-position: 0% 0;
+    -webkit-mask-position: 0% 0; /* visible by default */
+}
+
+/* First card (Virtual) starts hidden — the entry flare IS the reveal */
+#view-card .card-slide:first-child .virtual-card-wrapper {
+    -webkit-mask-position: 100% 0;
 }
 
 .virtual-card-img {
@@ -882,12 +1016,10 @@ body {
     left: -150%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.4) 50%,
-        rgba(255, 255, 255, 0) 100%
-    );
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.4) 50%,
+            rgba(255, 255, 255, 0) 100%);
     transform: skewX(-25deg);
     pointer-events: none;
     z-index: 10;
@@ -903,8 +1035,13 @@ body {
 }
 
 @keyframes premiumFlare {
-    0% { left: -150%; }
-    100% { left: 150%; }
+    0% {
+        left: -150%;
+    }
+
+    100% {
+        left: 150%;
+    }
 }
 
 @keyframes premiumAura {
@@ -912,9 +1049,11 @@ body {
         -webkit-mask-position: 100% 0;
         box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 0px rgba(122, 80, 247, 0);
     }
+
     50% {
         box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 60px rgba(122, 80, 247, 0.5), 0 0 30px rgba(255, 90, 112, 0.4);
     }
+
     100% {
         -webkit-mask-position: 0% 0;
         box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 0px rgba(122, 80, 247, 0);

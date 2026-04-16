@@ -36,7 +36,8 @@
                 <header class="app-header">
                     <div class="user-profile">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=100&h=100"
-                            alt="Profile Picture" class="avatar" onclick="window.location.href='index.html';" style="cursor: pointer;">
+                            alt="Profile Picture" class="avatar" onclick="window.location.href='index.html';"
+                            style="cursor: pointer;">
                         <div class="user-info">
                             <h1 class="user-name">Luis Toro Cordero</h1>
                             <p class="greeting">Welcome back</p>
@@ -57,119 +58,151 @@
                     <!-- Scrollable Content: Home -->
                     <main class="app-content view-pane active" id="view-home">
 
-                    <!-- Balance Section -->
-                    <section class="balance-section">
-                        <h2 class="balance-label">Total Balance</h2>
-                        <div class="balance-amount">$10,000.00 USD</div>
-                        <div class="currency-chip">
-                            <img src="assets/Flag.svg" alt="Ontop Flag" class="flag-icon">
-                            <span>USD</span>
-                        </div>
-                    </section>
-
-                    <!-- Action Buttons -->
-                    <section class="action-buttons">
-                        <button class="action-btn primary">
-                            <i class="ph ph-paper-plane-tilt"></i>
-                            Send
-                        </button>
-                        <button class="action-btn secondary">
-                            <i class="ph ph-plus-circle"></i>
-                            Receive
-                        </button>
-                        <button class="action-btn outline">
-                            <i class="ph ph-dots-three"></i>
-                        </button>
-                    </section>
-
-                    <!-- Accounts Carousel -->
-                    <section class="accounts-carousel">
-                        <div class="account-card pattern-bg">
-                            <div class="card-top">
-                                <div class="card-icon-wrapper">
-                                    <img src="assets/Flag.svg" alt="Ontop Flag" class="flag-icon">
-                                </div>
+                        <!-- Balance Section -->
+                        <section class="balance-section">
+                            <h2 class="balance-label">Total Balance</h2>
+                            <div class="balance-amount">10,000.00 USD</div>
+                            <div class="currency-chip">
+                                <img src="assets/Flag.svg" alt="Ontop Flag" class="flag-icon">
+                                <span>USD</span>
                             </div>
-                            <div class="card-bottom">
-                                <div class="account-balance">15,000.00</div>
-                                <div class="account-type">Payroll account</div>
-                            </div>
-                        </div>
+                        </section>
 
-                        <div class="account-card">
-                            <div class="card-top">
-                                <div class="card-icon-wrapper">
-                                    <img src="assets/Flag.svg" alt="Ontop Flag" class="flag-icon">
-                                </div>
-                            </div>
-                            <div class="card-bottom">
-                                <div class="account-balance">15,000.00</div>
-                                <div class="account-type">Digital USD</div>
-                            </div>
-                        </div>
-                    </section>
+                        <!-- Action Buttons -->
+                        <section class="action-buttons">
+                            <button class="action-btn primary">
+                                <i class="ph ph-paper-plane-tilt"></i>
+                                Send
+                            </button>
+                            <button class="action-btn secondary">
+                                <i class="ph ph-plus-circle"></i>
+                                Add
+                            </button>
+                            <button class="action-btn outline">
+                                <i class="ph ph-dots-three"></i>
+                            </button>
+                        </section>
 
-                    <!-- Transactions -->
-                    <section class="transactions-section">
-                        <header class="section-header">
-                            <h3>Your transactions</h3>
-                            <a href="#" class="btn-link">See all</a>
-                        </header>
-
-                        <div class="transaction-list">
-                            <div class="transaction-item">
-                                <div class="tx-left">
-                                    <div class="tx-icon">
-                                        <i class="ph ph-arrow-down-left"></i>
-                                    </div>
-                                    <div class="tx-details">
-                                        <p class="tx-title">Payment link</p>
-                                        <span class="tx-status completed">Completed</span>
+                        <!-- Accounts Carousel -->
+                        <section class="accounts-carousel">
+                            <!-- Card 1: Payroll -->
+                            <div class="account-card pattern-bg">
+                                <div class="card-top">
+                                    <div class="card-icon-wrapper">
+                                        <img src="assets/Flag.svg" alt="Ontop Flag" class="flag-icon">
+                                        <span class="card-currency-label">Payroll account</span>
                                     </div>
                                 </div>
-                                <div class="tx-right">
-                                    <p class="tx-amount positive"><span class="sign">+</span>90,000 USD</p>
+                                <div class="card-bottom">
+                                    <div class="account-balance">15,000.00</div>
+                                    <div class="account-type">Payroll account</div>
                                 </div>
                             </div>
 
-                            <div class="transaction-item">
-                                <div class="tx-left">
-                                    <div class="tx-icon">
-                                        <i class="ph ph-arrow-down-left"></i>
-                                    </div>
-                                    <div class="tx-details">
-                                        <p class="tx-title">Amazon</p>
-                                        <span class="tx-status completed">Completed</span>
+                            <!-- Card 2: Digital USDc (new, 2nd position) -->
+                            <div class="account-card">
+                                <div class="card-top">
+                                    <div class="card-icon-wrapper">
+                                        <img src="assets/Flag.svg" alt="Ontop Flag" class="flag-icon">
+                                        <span class="card-currency-label">Future Funds</span>
                                     </div>
                                 </div>
-                                <div class="tx-right">
-                                    <p class="tx-amount negative"><span class="sign">-</span>90,000 USDc</p>
+                                <div class="card-bottom">
+                                    <div class="account-balance">3,200.00</div>
+                                    <div class="account-type">Earn up to 3%APY</div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
 
-                    <!-- For You Section -->
-                    <section class="for-you-section">
-                        <header class="section-header">
-                            <h3>For you</h3>
-                        </header>
+                            <!-- Card 3: Digital USD -->
+                            <div class="account-card">
+                                <div class="card-top">
+                                    <div class="card-icon-wrapper">
+                                        <img src="assets/flag-usdc.svg" alt="Ontop Flag" class="flag-icon">
+                                        <span class="card-currency-label">Digital USD</span>
+                                    </div>
+                                </div>
+                                <div class="card-bottom">
+                                    <div class="account-balance">15,000.00</div>
+                                    <div class="account-type">USDc account</div>
+                                </div>
+                            </div>
+                        </section>
 
-                        <div class="offer-container">
-                            <img src="assets/Banner New.svg" alt="For you banner" class="offer-banner-single">
-                        </div>
-                    </section>
-                    <!-- Extra space to scroll past the floating nav bar -->
-                    <div class="scroll-spacer"></div>
+                        <!-- Transactions -->
+                        <section class="transactions-section">
+                            <header class="section-header">
+                                <h3>Your transactions</h3>
+                                <a href="#" class="btn-link">See all</a>
+                            </header>
+
+                            <div class="transaction-list">
+                                <div class="transaction-item">
+                                    <div class="tx-left">
+                                        <div class="tx-icon">
+                                            <i class="ph ph-arrow-down-left"></i>
+                                        </div>
+                                        <div class="tx-details">
+                                            <p class="tx-title">Payment link</p>
+                                            <span class="tx-status completed">Completed</span>
+                                        </div>
+                                    </div>
+                                    <div class="tx-right">
+                                        <p class="tx-amount positive"><span class="sign">+</span>90,000 USD</p>
+                                    </div>
+                                </div>
+
+                                <div class="transaction-item">
+                                    <div class="tx-left">
+                                        <div class="tx-icon">
+                                            <i class="ph ph-arrow-down-left"></i>
+                                        </div>
+                                        <div class="tx-details">
+                                            <p class="tx-title">Amazon</p>
+                                            <span class="tx-status completed">Completed</span>
+                                        </div>
+                                    </div>
+                                    <div class="tx-right">
+                                        <p class="tx-amount negative"><span class="sign">-</span>90,000 USDc</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- For You Section -->
+                        <section class="for-you-section">
+                            <header class="section-header">
+                                <h3>For you</h3>
+                            </header>
+
+                            <div class="offer-container">
+                                <img src="assets/Banner New.svg" alt="For you banner" class="offer-banner-single">
+                            </div>
+                        </section>
+                        <!-- Extra space to scroll past the floating nav bar -->
+                        <div class="scroll-spacer"></div>
                     </main>
 
                     <!-- Scrollable Content: Card -->
                     <main class="app-content view-pane" id="view-card">
+
+
+                        <!-- Card Display (Slider) -->
                         <div class="single-card-display">
-                            <div class="card-slide">
-                                <div class="virtual-card-wrapper">
-                                    <img src="assets/Virtual Card.png" alt="Virtual Card" class="virtual-card-img">
-                                    <div class="card-flare"></div>
+                            <div class="cards-track" id="cardsTrack">
+                                <!-- Slide 0: Virtual -->
+                                <div class="card-slide" id="activeCardSlide">
+                                    <div class="virtual-card-wrapper">
+                                        <img src="assets/Virtual Card.png" alt="Virtual Card" class="virtual-card-img">
+                                        <div class="card-flare"></div>
+                                    </div>
+                                </div>
+                                <!-- Slide 1: Physical -->
+                                <div class="card-slide">
+                                    <div class="virtual-card-wrapper">
+                                        <img src="assets/physical Card.png" alt="Physical Card"
+                                            class="virtual-card-img">
+                                        <div class="card-flare"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -196,10 +229,9 @@
                         </div>
 
                         <div class="offer-container">
-                            <img src="assets/Banner Card.png" alt="Get physical card banner" class="offer-banner-single">
+                            <img src="assets/Banner Card.png" alt="Get physical card banner"
+                                class="offer-banner-single">
                         </div>
-
-
 
                         <div class="scroll-spacer"></div>
                     </main>
