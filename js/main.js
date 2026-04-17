@@ -46,6 +46,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             lastRealViewIndex = index;
 
+            // Reset reddish theme when leaving Card view
+            const bgTint = document.getElementById('appBgTint');
+            if (bgTint) {
+                if (nextView.id !== 'view-card') {
+                    bgTint.classList.remove('physical-theme');
+                } else if (currentCardIndex === 1) {
+                    bgTint.classList.add('physical-theme');
+                }
+            }
+
             setTimeout(() => {
                 if (lastRealViewIndex === index) {
                     currentView.className = "app-content view-pane";
@@ -87,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cardSlides  = document.querySelectorAll('#cardsTrack .card-slide');
 
     let currentCardIndex = 0; // 0 = Virtual, 1 = Physical
+    const appBgTint = document.getElementById('appBgTint');
 
     function switchToCard(index) {
         if (index === currentCardIndex) return;
@@ -108,6 +119,15 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             cardToggle.classList.remove('physical-active');
         }
+
+        // Subtle background color shift
+        if (appBgTint) {
+            if (index === 1) {
+                appBgTint.classList.add('physical-theme');
+            } else {
+                appBgTint.classList.remove('physical-theme');
+            }
+        }
     }
 
     // Clicking the card slides to the other one
@@ -121,4 +141,31 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleOpts.forEach((btn, i) => {
         btn.addEventListener('click', () => switchToCard(i));
     });
+
+    // --- Add Funds Overlay (Digital USD Onboarding) ---
+    const addBtn       = document.querySelector('.action-btn.secondary');
+    const addOverlay   = document.getElementById('addFundsOverlay');
+    const addBackBtn   = document.getElementById('addFundsBack');
+    const addCtaBtn    = document.getElementById('addFundsCta');
+
+    function openAddFunds() {
+        if (!addOverlay) return;
+        addOverlay.classList.remove('closing');
+        addOverlay.classList.add('open');
+    }
+
+    function closeAddFunds() {
+        if (!addOverlay) return;
+        addOverlay.classList.add('closing');
+        addOverlay.classList.remove('open');
+        // Wait for exit animation to finish, then reset
+        setTimeout(() => {
+            addOverlay.classList.remove('closing');
+        }, 500);
+    }
+
+    if (addBtn)     addBtn.addEventListener('click', openAddFunds);
+    if (addBackBtn) addBackBtn.addEventListener('click', closeAddFunds);
+    // CTA just closes for now (prototype)
+    if (addCtaBtn)  addCtaBtn.addEventListener('click', closeAddFunds);
 });

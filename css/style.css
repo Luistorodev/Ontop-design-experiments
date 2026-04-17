@@ -96,6 +96,27 @@ body {
         breathingGradient 14s ease-in-out infinite alternate;
 }
 
+/* Reddish tint overlay for physical card view */
+.app-bg-tint {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    border-radius: 32px;
+    background: radial-gradient(100.38% 68.74% at 50% -23.81%, #8a1e35 0%, #d4567a 18.27%, #b83d5c 42.79%, #3a0c18 81.73%, #220610 100%);
+    background-size: 160% 160%;
+    background-position: 20% 0%;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.app-bg-tint.physical-theme {
+    opacity: 0.6;
+}
+
 .app-container {
     width: 100%;
     height: 100%;
