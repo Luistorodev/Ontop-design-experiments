@@ -35,6 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
             currentView.className = "app-content view-pane";
             nextView.className = "app-content view-pane";
 
+            // Prevent double-animation of the card by removing the class before it becomes visible
+            if (nextView.id === 'view-card') {
+                const firstSlide = nextView.querySelector('#cardsTrack .card-slide');
+                if (firstSlide) firstSlide.classList.remove('play-anim');
+            }
+
             // Direction: use lastRealViewIndex for correct left/right slide
             if (index > lastRealViewIndex) {
                 currentView.classList.add("slide-out-left");
@@ -56,13 +62,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
 
-            setTimeout(() => {
-                if (lastRealViewIndex === index) {
-                    currentView.className = "app-content view-pane";
-                    nextView.className = "app-content view-pane active";
-
-                    // Fire card entry animation on the visible (first) card only
-                    if (nextView.id === 'view-card') {
+            // Fire card entry animation much earlier (during the slide-in transition)
+            if (nextView.id === 'view-card') {
+                setTimeout(() => {
+                    if (lastRealViewIndex === index) {
                         const firstSlide = nextView.querySelector('#cardsTrack .card-slide');
                         if (firstSlide) {
                             firstSlide.classList.remove('play-anim');
@@ -70,6 +73,13 @@ document.addEventListener("DOMContentLoaded", () => {
                             firstSlide.classList.add('play-anim');
                         }
                     }
+                }, 100);
+            }
+
+            setTimeout(() => {
+                if (lastRealViewIndex === index) {
+                    currentView.className = "app-content view-pane";
+                    nextView.className = "app-content view-pane active";
                 }
             }, 400);
         });

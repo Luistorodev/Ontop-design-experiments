@@ -1048,11 +1048,11 @@ body {
 }
 
 .card-slide.play-anim .card-flare {
-    animation: premiumFlare 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+    animation: premiumFlare 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .card-slide.play-anim .virtual-card-wrapper {
-    animation: premiumAura 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+    animation: premiumAura 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes premiumFlare {
