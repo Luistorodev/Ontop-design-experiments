@@ -87,8 +87,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         if (newIndex >= steps.length) {
-            // Finish flow -> Dashboard
-            window.location.href = 'dashboard.html';
+            // Finish flow -> Show Success Animation, then Dashboard
+            const overlay = document.getElementById('su-success-overlay');
+            if (overlay) {
+                overlay.classList.add('active');
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 2000);
+            } else {
+                window.location.href = 'dashboard.html';
+            }
             return;
         }
 

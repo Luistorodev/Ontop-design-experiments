@@ -353,3 +353,71 @@
     border-radius: 4px;
     margin: 20px auto 0;
 }
+
+/* Success Animation */
+.su-success-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(14, 11, 23, 0.95);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.su-success-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.su-success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #6ed085;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    transform: scale(0);
+    box-shadow: 0 8px 24px rgba(110, 208, 133, 0.3);
+}
+
+.su-success-overlay.active .su-success-icon {
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation-delay: 0.1s;
+}
+
+.su-success-text {
+    font-family: 'General Sans', sans-serif;
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 24px;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.su-success-overlay.active .su-success-text {
+    animation: fadeUp 0.4s ease forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); }
+    80% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
