@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ontop — Activation</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/activation.css">
+</head>
+<body>
+    <div class="presentation-wrapper">
+        <div class="device-frame">
+            <div class="app-bg-base"></div>
+            <div class="app-bg-gradient"></div>
+            
+            <div class="app-container activation-container">
+                <div class="status-bar light">
+                    <span class="time">9:41</span>
+                    <div class="status-icons">
+                        <i class="ph-fill ph-cell-signal-full"></i>
+                        <i class="ph-fill ph-wifi-high"></i>
+                        <i class="ph-fill ph-battery-full"></i>
+                    </div>
+                </div>
+
+                <!-- Header -->
+                <div class="ac-header">
+                    <a href="dashboard.html" class="ac-back-btn" aria-label="Go back">
+                        <i class="ph ph-arrow-left"></i>
+                    </a>
+                </div>
+
+                <!-- Hero Main -->
+                <div class="ac-hero">
+                    <div class="ac-progress-container">
+                        <!-- SVG Circular Progress -->
+                        <svg class="ac-progress-svg" width="92" height="92" viewBox="0 0 92 92">
+                            <!-- Track -->
+                            <circle class="ac-progress-track" cx="46" cy="46" r="42" />
+                            <!-- Progress Ring -->
+                            <circle class="ac-progress-ring" cx="46" cy="46" r="42" />
+                        </svg>
+                        <div class="ac-progress-text">
+                            <span class="ac-percent">25%</span>
+                            <span class="ac-sub-label">Done</span>
+                        </div>
+                    </div>
+                    
+                    <div class="ac-hero-text">
+                        <div class="ac-title-wrap">
+                            <span class="ac-overline">Activating account</span>
+                            <h1 class="ac-title">Finish setting up</h1>
+                        </div>
+                        <div class="ac-meta-row">
+                            <div class="ac-time-pill">
+                                <i class="ph ph-clock"></i>
+                                <span>~ 6 min left</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Checklist Body -->
+                <div class="ac-checklist-body">
+                    <div class="ac-steps-stack">
+                        <!-- Step Card 1 -->
+                        <div class="ac-step-card completed">
+                            <div class="ac-number-circle">
+                                <i class="ph ph-check"></i>
+                            </div>
+                            <div class="ac-card-content">
+                                <div class="ac-title-row">
+                                    <span class="ac-card-title">Create account</span>
+                                </div>
+                                <p class="ac-card-desc">Your basic details and email are verified.</p>
+                                <div class="ac-stats">
+                                    <div class="ac-stat-item">
+                                        <i class="ph-fill ph-check-circle" style="color: #6ed085"></i>
+                                        <span>Completed</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step Card 2 -->
+                        <div class="ac-step-card active">
+                            <div class="ac-number-circle">
+                                <span>2</span>
+                            </div>
+                            <div class="ac-card-content">
+                                <div class="ac-title-row">
+                                    <span class="ac-card-title">Verify your identity</span>
+                                    <div class="ac-badge">
+                                        <span>Up next</span>
+                                    </div>
+                                </div>
+                                <p class="ac-card-desc">We need to confirm your legal identity before you can get paid.</p>
+                                <div class="ac-stats">
+                                    <div class="ac-stat-item">
+                                        <i class="ph ph-clock"></i>
+                                        <span>~ 3 mins</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ac-chevron">
+                                <i class="ph ph-caret-right"></i>
+                            </div>
+                        </div>
+
+                        <!-- Step Card 3 -->
+                        <div class="ac-step-card disabled">
+                            <div class="ac-number-circle">
+                                <span>3</span>
+                            </div>
+                            <div class="ac-card-content">
+                                <div class="ac-title-row">
+                                    <span class="ac-card-title">Connect bank account</span>
+                                </div>
+                                <p class="ac-card-desc">Add where you want to receive your money securely.</p>
+                                <div class="ac-stats">
+                                    <div class="ac-stat-item">
+                                        <i class="ph ph-clock"></i>
+                                        <span>~ 2 mins</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ac-chevron">
+                                <i class="ph ph-caret-right"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Trigger the progress animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const circle = document.querySelector('.ac-progress-ring');
+            const radius = circle.r.baseVal.value;
+            const circumference = radius * 2 * Math.PI;
+            
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            circle.style.strokeDashoffset = circumference;
+            
+            // Set progress to 25%
+            const percent = 25;
+            const offset = circumference - (percent / 100) * circumference;
+            
+            // Delay for smooth entry
+            setTimeout(() => {
+                circle.style.strokeDashoffset = offset;
+            }, 300);
+        });
+    </script>
+</body>
+</html>
