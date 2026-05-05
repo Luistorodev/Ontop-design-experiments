@@ -98,7 +98,7 @@
     font-family: 'General Sans', sans-serif;
     font-size: 13px;
     font-weight: 500;
-    color: var(--purple-light);
+    color: white;
     display: block;
     margin-bottom: 4px;
 }
@@ -107,9 +107,13 @@
     font-family: 'General Sans', sans-serif;
     font-size: 22px;
     font-weight: 600;
-    color: white;
     margin-bottom: 12px;
     line-height: 1.2;
+    background: linear-gradient(90deg, #9570FF 0%, #FFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
 .ac-time-pill {
@@ -129,6 +133,15 @@
 /* Checklist Body */
 .ac-checklist-body {
     padding: 0 16px 32px;
+}
+
+.ac-section-heading {
+    font-family: 'General Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 16px;
+    padding-left: 4px;
 }
 
 .ac-steps-stack {
