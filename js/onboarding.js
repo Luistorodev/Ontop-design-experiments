@@ -29,7 +29,7 @@
 
     // ── Skip (go to dashboard) ───────────────────────────────────
     function skip() {
-        window.location.href = 'dashboard.html';
+        window.location.href = 'login.html';
     }
 
     // ── Wire up buttons ──────────────────────────────────────────
@@ -42,7 +42,7 @@
                 if (i < TOTAL_SLIDES) {
                     goTo(i); // next slide (0-indexed: slide i is index i)
                 } else {
-                    skip();  // last slide → go to dashboard
+                    window.location.href = 'login.html';  // last slide → go to login
                 }
             });
         }

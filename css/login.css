@@ -1,0 +1,215 @@
+/* css/login.css */
+
+/* ============================================================
+   LOGIN CONTAINER
+   ============================================================ */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    animation: none !important;
+    opacity: 1 !important;
+    background: transparent;
+}
+
+/* ============================================================
+   HEADER — Logo + Title
+   ============================================================ */
+.lg-header {
+    padding: 14px 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: lgFadeUp 0.55s cubic-bezier(0.4, 0, 0.2, 1) both;
+    animation-delay: 0.1s;
+}
+
+.lg-logo {
+    width: 32px;
+    height: auto;
+    filter: brightness(0) invert(1);
+}
+
+.lg-title {
+    font-family: 'General Sans', sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: -0.3px;
+    margin: 0;
+}
+
+/* ============================================================
+   FORM
+   ============================================================ */
+.lg-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+    margin-top: 56px;
+    gap: 24px;
+    animation: lgFadeUp 0.55s cubic-bezier(0.4, 0, 0.2, 1) both;
+    animation-delay: 0.2s;
+}
+
+/* Field group */
+.lg-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.lg-label {
+    font-family: 'General Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(235, 235, 245, 0.75);
+    letter-spacing: 0.1px;
+}
+
+/* Input wrapper */
+.lg-input-wrap {
+    position: relative;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lg-input-wrap.focused {
+    border-color: rgba(122, 80, 247, 0.7);
+    background: rgba(122, 80, 247, 0.08);
+    box-shadow: 0 0 0 3px rgba(122, 80, 247, 0.15);
+}
+
+/* Input field */
+.lg-input {
+    width: 100%;
+    height: 48px;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0 16px;
+    font-family: 'General Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #ffffff;
+    caret-color: var(--purple-primary);
+}
+
+.lg-input::placeholder {
+    color: rgba(235, 235, 245, 0.3);
+}
+
+/* Password toggle button */
+.lg-input-wrap--password .lg-input {
+    padding-right: 48px;
+}
+
+.lg-eye-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(235, 235, 245, 0.4);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+.lg-eye-btn:hover {
+    color: rgba(235, 235, 245, 0.75);
+}
+
+/* ============================================================
+   CTA BUTTONS
+   ============================================================ */
+.lg-actions {
+    padding: 0 16px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: lgFadeUp 0.55s cubic-bezier(0.4, 0, 0.2, 1) both;
+    animation-delay: 0.3s;
+}
+
+/* Shared button base */
+.lg-btn {
+    width: 100%;
+    height: 44px;
+    border-radius: 32px;
+    font-family: 'General Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.lg-btn:active {
+    transform: translateY(2px);
+}
+
+/* Primary — same as dashboard .action-btn.primary (metallic border) */
+.lg-btn--primary {
+    color: white;
+    border: 1px solid transparent;
+    background:
+        linear-gradient(var(--purple-primary), var(--purple-primary)) padding-box,
+        linear-gradient(90deg, #5d5657, #c9c5c5, #ffffff, #c9c5c5, #5d5657, #c9c5c5, #ffffff, #c9c5c5, #5d5657) border-box;
+    background-size: 100% 100%, 200% 100%;
+    animation:
+        metallicBorder 2.5s linear 2,
+        fadeGlow 0.5s ease 4.5s forwards;
+    box-shadow: 0 0 8px rgba(201, 197, 197, 0.4), 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Secondary — same as dashboard .action-btn.secondary */
+.lg-btn--secondary {
+    background-color: #667085;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================================
+   HOME INDICATOR
+   ============================================================ */
+.lg-home-indicator {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.lg-home-indicator::after {
+    content: '';
+    width: 120px;
+    height: 4px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================================
+   ENTRANCE ANIMATION
+   ============================================================ */
+@keyframes lgFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
