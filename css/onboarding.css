@@ -155,18 +155,47 @@
 .ob-image-1 {
     filter: drop-shadow(0 16px 36px rgba(0,0,0,0.75));
     animation: obFloat1 5s ease-in-out infinite;
+    object-position: center 30%;
+}
+.ob-slide:nth-of-type(2) .ob-image-wrap {
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin-top: 80px;
 }
 .ob-image-2 {
     filter: drop-shadow(0 16px 36px rgba(80, 0, 160, 0.55));
     animation: obFloat2 5.5s ease-in-out infinite;
+    object-position: center left;
+}
+.ob-slide:nth-of-type(3) .ob-image-wrap {
+    position: absolute;
+    inset: -80px 0 0 0;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+.ob-slide:nth-of-type(3) .ob-content {
+    z-index: 10;
 }
 .ob-image-3 {
-    filter: drop-shadow(0 16px 36px rgba(140, 10, 30, 0.55));
+    width: 140%;
+    height: 140%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.45;
     animation: obFloat3 4.8s ease-in-out infinite;
+}
+.ob-slide:nth-of-type(4) .ob-image-wrap {
+    align-items: flex-end;
+    margin-bottom: 70px;
 }
 .ob-image-4 {
     filter: drop-shadow(0 16px 36px rgba(0,0,0,0.85));
     animation: obFloat1 6s ease-in-out infinite;
+    width: 85%;
+    height: 85%;
+    align-self: center;
 }
 
 /* Floating micro-animations */
@@ -184,18 +213,20 @@
 }
 
 /* ============================================================
-   FOOTER — always pinned at the bottom
-   ============================================================ */
+    FOOTER — always pinned at the bottom (fixed, outside track)
+    ============================================================ */
 .ob-footer {
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 30;
-    flex-shrink: 0;        /* never squeezed */
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     padding: 10px 16px 20px;
-    /* scrim so text stays readable over any image bleed */
     background: linear-gradient(
         to bottom,
         transparent 0%,
@@ -282,8 +313,7 @@
     to   { opacity: 1; transform: translateY(0); }
 }
 
-.ob-slide.entering .ob-content,
-.ob-slide.entering .ob-footer {
+.ob-slide.entering .ob-content {
     animation: obContentIn 0.48s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 

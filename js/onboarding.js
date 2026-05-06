@@ -6,6 +6,29 @@
     let currentIndex = 0;
 
     const track = document.getElementById('ob-track');
+    const continueBtn = document.getElementById('ob-continue-btn');
+    const skipBtn = document.getElementById('ob-skip-btn');
+    const dots = document.querySelectorAll('#ob-dots .ob-dot');
+
+    const slideTexts = [
+        {
+            headline: 'The World is<br>your Stage',
+            subtext: 'All your money. One place.<br>Built for people who move first.'
+        },
+        {
+            headline: 'Bill the Globe.<br>Get Paid, Fast',
+            subtext: 'Use Ontop Pay to invoice any client, anywhere. Professional billing meets instant deposits.'
+        },
+        {
+            headline: 'Spend Without<br>Borders',
+            subtext: 'Your Ontop Visa Platinum is linked to your accounts. Virtual and physical. Spend anywhere Visa is accepted.',
+            accent: true
+        },
+        {
+            headline: 'The Global<br>Standard',
+            subtext: "Don't just move, move better. 10% cashback, VIP travel, and global perks. The essential layer for your global life."
+        }
+    ];
 
     // ── Navigate to a slide ──────────────────────────────────────
     function goTo(index) {
@@ -13,44 +36,52 @@
 
         const newSlide = track.children[index];
         newSlide.classList.add('entering');
-        // Remove entering class after animation finishes
         newSlide.addEventListener('animationend', () => {
             newSlide.classList.remove('entering');
         }, { once: true });
 
         currentIndex = index;
-        // Slide the track: each slide = 25% of the 400%-wide track
-        // So offset in viewport units = index * (100% of device width)
-        // But since track is 400% wide, each child is 100% device width
-        // We move by (index * 100 / 4)% of the track width, which equals index * 25%
-        // Simpler: just translate by negative index × device width (100vw for track)
         track.style.transform = `translateX(-${index * 25}%)`;
+
+        // Update dots
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+
+        // Update continue button text
+        if (index === TOTAL_SLIDES - 1) {
+            continueBtn.textContent = 'Get Started';
+        } else {
+            continueBtn.textContent = 'Continue';
+        }
     }
 
-    // ── Skip (go to dashboard) ───────────────────────────────────
+    // ── Skip (go to login) ───────────────────────────────────────
     function skip() {
         window.location.href = 'login.html';
     }
 
-    // ── Wire up buttons ──────────────────────────────────────────
-    for (let i = 1; i <= TOTAL_SLIDES; i++) {
-        const continueBtn = document.getElementById(`ob-continue-${i}`);
-        const skipBtn     = document.getElementById(`ob-skip-${i}`);
-
-        if (continueBtn) {
-            continueBtn.addEventListener('click', () => {
-                if (i < TOTAL_SLIDES) {
-                    goTo(i); // next slide (0-indexed: slide i is index i)
-                } else {
-                    window.location.href = 'login.html';  // last slide → go to login
-                }
-            });
-        }
-
-        if (skipBtn) {
-            skipBtn.addEventListener('click', skip);
-        }
+    // ── Wire up continue button ──────────────────────────────────
+    if (continueBtn) {
+        continueBtn.addEventListener('click', () => {
+            if (currentIndex < TOTAL_SLIDES - 1) {
+                goTo(currentIndex + 1);
+            } else {
+                window.location.href = 'login.html';
+            }
+        });
     }
+
+    // ── Wire up skip button ──────────────────────────────────────
+    if (skipBtn) {
+        skipBtn.addEventListener('click', skip);
+    }
+
+    // ── Wire up dot clicks ───────────────────────────────────────
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const slideIndex = parseInt(dot.dataset.slide);
+            goTo(slideIndex);
+        });
+    });
 
     // ── Touch / swipe support ────────────────────────────────────
     let touchStartX = 0;
@@ -65,13 +96,12 @@
         const dx = e.changedTouches[0].clientX - touchStartX;
         const dy = e.changedTouches[0].clientY - touchStartY;
 
-        // Only respond to horizontal swipes
         if (Math.abs(dx) < Math.abs(dy) || Math.abs(dx) < 40) return;
 
         if (dx < 0 && currentIndex < TOTAL_SLIDES - 1) {
-            goTo(currentIndex + 1); // swipe left → next
+            goTo(currentIndex + 1);
         } else if (dx > 0 && currentIndex > 0) {
-            goTo(currentIndex - 1); // swipe right → prev
+            goTo(currentIndex - 1);
         }
     }, { passive: true });
 
