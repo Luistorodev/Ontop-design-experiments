@@ -306,34 +306,9 @@ body {
 .action-btn.primary {
     flex: 1;
     color: white;
-    border: 1px solid transparent;
-    background:
-        linear-gradient(var(--purple-primary), var(--purple-primary)) padding-box,
-        linear-gradient(90deg, #5d5657, #c9c5c5, #ffffff, #c9c5c5, #5d5657, #c9c5c5, #ffffff, #c9c5c5, #5d5657) border-box;
-    background-size: 100% 100%, 200% 100%;
-    animation:
-        metallicBorder 2.5s linear 2,
-        fadeGlow 0.5s ease 4.5s forwards;
-    box-shadow: 0 0 8px rgba(201, 197, 197, 0.4), 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-@keyframes metallicBorder {
-    to {
-        background-position: 0% 0%, 200% 0%;
-    }
-}
-
-@keyframes fadeGlow {
-    from {
-        border-color: transparent;
-        box-shadow: 0 0 8px rgba(201, 197, 197, 0.4), 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    to {
-        border-color: var(--purple-primary);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        background-position: 0% 0%, 200% 0%;
-    }
+    border: 1px solid var(--purple-primary);
+    background: var(--purple-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .action-btn.secondary {
